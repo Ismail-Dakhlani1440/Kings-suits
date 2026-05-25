@@ -23,12 +23,12 @@
                     Men's Suits King Fashion — elevating style for generations since 1992. Suits, tuxedos &amp; same-day alterations in Ontario &amp; Montclair, CA.
                 </p>
                 <p style="font-size: 0.8rem; color: var(--mid-gray); margin-bottom: 0.6rem; line-height: 1.8;">
-                    📍 4323 Mills Cir, #103, Ontario, CA 91764<br>
-                    📍 5505 Moreno St, 102 &amp; 103, Montclair, CA 91763
+                    <span style="color:var(--gold); font-weight:600;">Ontario:</span> 4323 Mills Cir, #103, Ontario, CA 91764<br>
+                    <span style="color:var(--gold); font-weight:600;">Montclair:</span> 5505 Moreno St, 102 &amp; 103, Montclair, CA 91763
                 </p>
                 <p style="font-size: 0.8rem; color: var(--mid-gray); margin-bottom: 1rem; line-height: 1.8;">
-                    ☎ <a href="tel:3237474157" style="color:var(--mid-gray);">(323) 747-4157</a><br>
-                    ✉ <a href="mailto:denisericotta1@gmail.com" style="color:var(--mid-gray);">denisericotta1@gmail.com</a>
+                    <span style="color:var(--gold); font-weight:600;">Phone:</span> <a href="tel:3237474157" style="color:var(--mid-gray);">(323) 747-4157</a><br>
+                    <span style="color:var(--gold); font-weight:600;">Email:</span> <a href="mailto:denisericotta1@gmail.com" style="color:var(--mid-gray);">denisericotta1@gmail.com</a>
                 </p>
                 <div class="footer__social">
                     <a href="https://www.instagram.com/mens_suitsking_fashion/" target="_blank" rel="noopener" id="footer-social-ig" aria-label="Instagram">IG</a>
@@ -77,14 +77,29 @@
             </div>
         </div>
 
-        <div class="footer__bottom">
-            <span>&copy; {{ date('Y') }} Men's Suits King Fashion. All rights reserved.</span>
-            <span style="color: #444;">Est. 1992 — Ontario &amp; Montclair, CA</span>
-            <span>
-                <a href="/accessibility_page" style="color: var(--mid-gray); margin-right: 1rem;">Accessibility</a>
-                <a href="https://www.yelp.com/biz/men-s-suits-king-fashion-montclair" target="_blank" rel="noopener" style="color: var(--mid-gray); margin-right: 1rem;">Yelp</a>
-                <a href="https://maps.app.goo.gl/4xjotWtuPCFyksTU7" target="_blank" rel="noopener" style="color: var(--mid-gray);">Google Maps</a>
-            </span>
+        <div class="footer__bottom" style="flex-direction: column; gap: 1.25rem; align-items: center; border-top: 1px solid #1a1a1a; padding-top: 2rem;">
+            <div style="display: flex; justify-content: space-between; width: 100%; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <span>&copy; {{ date('Y') }} Men's Suits King Fashion. All rights reserved.</span>
+                <span style="color: #444;">Est. 1992 — Ontario &amp; Montclair, CA</span>
+                <span>
+                    <a href="/accessibility_page" style="color: var(--mid-gray); margin-right: 1rem;">Accessibility</a>
+                    <a href="https://www.yelp.com/biz/men-s-suits-king-fashion-montclair" target="_blank" rel="noopener" style="color: var(--mid-gray); margin-right: 1rem;">Yelp</a>
+                    <a href="https://maps.app.goo.gl/4xjotWtuPCFyksTU7" target="_blank" rel="noopener" style="color: var(--mid-gray);">Google Maps</a>
+                </span>
+            </div>
+
+            <div style="font-size: 0.75rem; color: #444; border-top: 1px solid rgba(255,255,255,0.02); width: 100%; padding-top: 1rem; text-align: center;">
+                @auth
+                    <span style="color: var(--gold-light); font-weight: 500;">Staff Console:</span>
+                    <a href="{{ route('admin.dashboard') }}" style="color: var(--light-gray); margin: 0 0.5rem; text-decoration: underline;">Dashboard</a> |
+                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form-footer').submit();" style="color: var(--light-gray); margin: 0 0.5rem; text-decoration: underline;">Logout</a>
+                    <form id="logout-form-footer" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @else
+                    <span>Are you a member of our team? <a href="{{ route('login') }}" style="color: var(--gold-dark); text-decoration: underline; font-weight: 500; margin-left: 0.25rem;">Access the Staff Portal to manage client requests</a></span>
+                @endauth
+            </div>
         </div>
     </div>
 </footer>

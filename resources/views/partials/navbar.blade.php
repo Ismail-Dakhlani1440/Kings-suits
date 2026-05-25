@@ -60,7 +60,7 @@
     <a href="{{ url('/collections') }}">Collections</a>
     <a href="{{ url('/services') }}">Services</a>
     <a href="{{ url('/contact') }}">Contact</a>
-    <a href="{{ url('/contact') }}" style="color: var(--gold); margin-top: 0.5rem;">Book Appointment →</a>
+    <a href="{{ url('/contact') }}" class="btn btn-gold" style="display: block; text-align: center; margin-top: 1.5rem; justify-content: center;">Book Appointment</a>
     <button class="theme-toggle theme-toggle--mobile" id="themeToggleMobile" aria-label="Toggle light/dark mode">
         <span class="theme-toggle__knob">
             <span class="theme-toggle__icon theme-toggle__icon--moon">☾</span>

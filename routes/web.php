@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminAppointmentController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
+// Public client routes
 Route::get('/', function () {
     return view('home');
 });
@@ -18,16 +22,21 @@ Route::get('/contact', function () {
     return view('contact');
 })->name('contact');
 
-Route::post('/contact', function (\Illuminate\Http\Request $request) {
-    $request->validate([
-        'first_name' => 'required|string|max:100',
-        'last_name'  => 'required|string|max:100',
-        'email'      => 'required|email|max:255',
-        'service'    => 'required|string',
-        'message'    => 'required|string|min:10',
-        'consent'    => 'required',
-    ]);
+// Public form handler
+Route::post('/appointments', [AppointmentController::class, 'store'])->name('appointments.store');
 
-    // TODO: send email / store in DB
-    return back()->with('success', 'Thank you! We\'ll be in touch within 24 hours.');
+// Redirect /admin to /admin/dashboard
+Route::get('/admin', function () {
+    return redirect()->route('admin.dashboard');
 });
+
+// Protected admin routing group
+Route::prefix('admin')->middleware(['auth'])->group(function () {
+    Route::get('/dashboard', [AdminDashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/appointments', [AdminAppointmentController::class, 'index'])->name('admin.appointments');
+    Route::post('/appointments/{appointment}/status', [AdminAppointmentController::class, 'updateStatus'])->name('admin.appointments.update');
+    Route::post('/appointments/{appointment}/contact', [AdminAppointmentController::class, 'markContacted'])->name('admin.appointments.contact');
+});
+
+// Load admin authentication routes
+require __DIR__.'/auth.php';

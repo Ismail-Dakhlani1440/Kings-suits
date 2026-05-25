@@ -10,7 +10,88 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    @vite(['resources/css/app.css'])
+
+    <!-- Schema.org LocalBusiness Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ClothingStore",
+          "@id": "https://www.menssuitskingfashion.com/#ontario",
+          "name": "Men's Suits King Fashion - Ontario Showroom",
+          "url": "{{ url('/') }}",
+          "telephone": "(323) 747-4157",
+          "priceRange": "$$",
+          "image": "{{ asset('images/ontario-showroom.jpg') }}",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "4323 Mills Cir, #103",
+            "addressLocality": "Ontario",
+            "addressRegion": "CA",
+            "postalCode": "91764",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 34.0732, 
+            "longitude": -117.5539
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "10:00",
+              "closes": "20:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Saturday", "Sunday"],
+              "opens": "11:00",
+              "closes": "19:00"
+            }
+          ]
+        },
+        {
+          "@type": "ClothingStore",
+          "@id": "https://www.menssuitskingfashion.com/#montclair",
+          "name": "Men's Suits King Fashion - Montclair Showroom",
+          "url": "{{ url('/') }}",
+          "telephone": "(323) 747-4157",
+          "priceRange": "$$",
+          "image": "{{ asset('images/montclair-showroom.jpg') }}",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "5505 Moreno St, 102 & 103",
+            "addressLocality": "Montclair",
+            "addressRegion": "CA",
+            "postalCode": "91763",
+            "addressCountry": "US"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 34.0883,
+            "longitude": -117.6908
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+              "opens": "10:00",
+              "closes": "20:00"
+            },
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Saturday", "Sunday"],
+              "opens": "11:00",
+              "closes": "19:00"
+            }
+          ]
+        }
+      ]
+    }
+    </script>
 
     @stack('head')
 </head>
